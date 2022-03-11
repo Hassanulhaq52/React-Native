@@ -11,6 +11,8 @@ import {
   Text,
   View,
   TextInput,
+  Button,
+  TouchableOpacity
 
 } from 'react-native';
 
@@ -21,7 +23,13 @@ import { getPixelSizeForLayoutSize } from 'react-native/Libraries/Utilities/Pixe
 
 const App = () => {
 
-  const[name, SetName] = useState('');
+  const [name, SetName] = useState('');
+  const [submitted, SetSubmitted] = useState(false);
+  const onPressHandler = () => {
+
+    SetSubmitted(!submitted);
+
+  }
 
   return (
 
@@ -32,19 +40,45 @@ const App = () => {
       </Text>
 
       <TextInput
-      // multiline
+
         style={styles.input}
-        placeholder = 'e.g John Smith'
+        placeholder='e.g John Smith'
         onChangeText={(value) => SetName(value)}
-        // keyboardType ='phone-pad'
-        // maxLength={3}
-        // editable = {false}
-        // secureTextEntry
+
       />
 
-<Text style={styles.text}>
-        Your Name is: {name}
-      </Text>
+      {/* <Button
+
+        title={submitted ? 'clear' : 'Submit'}
+        onPress={onPressHandler}
+        
+
+      /> */}
+
+      <TouchableOpacity
+
+    style = {styles.button}
+      onPress={onPressHandler}
+      activeOpacity = {0.5}
+
+      >
+     
+    <Text style = {styles.text}>
+
+    {submitted ? 'clear' : 'Submit'}
+
+    </Text>
+          
+      </TouchableOpacity>
+
+      {submitted ?
+        <Text style={styles.text}>
+          You Are Registered As {name}
+        </Text>
+
+        :
+        null
+      }
 
     </View>
 
@@ -80,10 +114,19 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
     borderRadius: 50,
     fontSize: 23,
-    textAlign: 'center'
-   
-  }
+    textAlign: 'center',
+    margin: 10
 
+  },
+
+  button: {
+
+    backgroundColor: '#71d6eb',
+    height: 50,
+    width: 150,
+    alignItems: 'center',
+
+  }
 
 });
 
