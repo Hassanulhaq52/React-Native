@@ -16,7 +16,8 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
   hitSlop,
-  Alert
+  Alert,
+  ToastAndroid
 
 } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
@@ -37,36 +38,40 @@ const App = () => {
       SetSubmitted(!submitted);
 
     }
-    else {
+    // else {
 
-      Alert.alert('Warning', "The name must be longer than 3 characters. ",
+    //   Alert.alert('Warning', "The name must be longer than 3 characters. ",
 
-        [
+    //     [
 
-          {
-            text: 'Do not Show This Again', onPress: () => console.warn('Do not Show This Again')
-          },
+    //       {
+    //         text: 'Do not Show This Again', onPress: () => console.warn('Do not Show This Again')
+    //       },
 
-          {
-            text: 'Cancel', onPress: () => console.warn('Cancel')
-          },
+    //       {
+    //         text: 'Cancel', onPress: () => console.warn('Cancel')
+    //       },
 
-          {
-            text: 'OK', onPress: () => console.warn('OK')
-          }
+    //       {
+    //         text: 'OK', onPress: () => console.warn('OK')
+    //       }
 
-        ],
+    //     ],
 
-        {
-          cancelable: true, onDismiss: () => console.warn('Alert Dismissed')
-        }
+    //     {
+    //       cancelable: true, onDismiss: () => console.warn('Alert Dismissed')
+    //     })
 
-      )
+    // }
 
-
-    }
-
-
+    ToastAndroid.showWithGravityAndOffset(
+      "The name must be longer than 3 characters. ",
+    ToastAndroid.LONG,
+    ToastAndroid.CENTER,
+    0,
+    50
+    
+    )
 
   }
 
