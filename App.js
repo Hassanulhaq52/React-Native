@@ -14,14 +14,16 @@ import {
   Button,
   TouchableOpacity,
   TouchableHighlight,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  hitSlop
 
 } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 import SectionList from 'react-native/Libraries/Lists/SectionList';
 import { getPixelSizeForLayoutSize } from 'react-native/Libraries/Utilities/PixelRatio';
 
-// import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
 
@@ -57,7 +59,7 @@ const App = () => {
 
       /> */}
 
-      <TouchableWithoutFeedback
+      {/* <TouchableWithoutFeedback
 
         style={styles.button}
         onPress={onPressHandler}
@@ -75,7 +77,26 @@ const App = () => {
         </View>
 
 
-      </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback> */}
+
+      <Pressable
+      
+      onPress = {onPressHandler}
+      hitSlop = {{top: 10, bottom: 10, right: 10, left: 10}}
+      android_ripple = {{color:'#00f'}}
+      style = {({pressed}) =>  [
+        {backgroundColor: pressed ? '#d9b793' : '#71d6eb'},
+        styles.button]}
+
+      >
+
+        <Text style={styles.text}>
+
+          {submitted ? 'clear' : 'Submit'}
+
+        </Text>
+
+      </Pressable>
 
       {submitted ?
         <Text style={styles.text}>
@@ -127,7 +148,6 @@ const styles = StyleSheet.create({
 
   button: {
 
-    backgroundColor: '#71d6eb',
     height: 50,
     width: 150,
     alignItems: 'center',
