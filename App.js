@@ -12,7 +12,8 @@ import {
   View,
   TextInput,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 
 } from 'react-native';
 
@@ -55,11 +56,12 @@ const App = () => {
 
       /> */}
 
-      <TouchableOpacity
+      <TouchableHighlight
 
     style = {styles.button}
       onPress={onPressHandler}
       activeOpacity = {0.5}
+      underlayColor = '#dddddd'
 
       >
      
@@ -69,7 +71,7 @@ const App = () => {
 
     </Text>
           
-      </TouchableOpacity>
+      </TouchableHighlight>
 
       {submitted ?
         <Text style={styles.text}>
