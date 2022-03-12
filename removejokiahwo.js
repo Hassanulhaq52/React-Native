@@ -294,11 +294,68 @@
 
 
 
+   {/* <Button
+
+        title={submitted ? 'clear' : 'Submit'}
+        onPress={onPressHandler}
+        
+
+      /> */}
+
+      {/* <TouchableWithoutFeedback
+
+        style={styles.button}
+        onPress={onPressHandler}
+
+      >
+
+        <View style = {styles.button}>
+
+          <Text style={styles.text}>
+
+            {submitted ? 'clear' : 'Submit'}
+
+          </Text>
+
+        </View>
+
+
+      </TouchableWithoutFeedback> */}
 
 
 
+//   Alert.alert('Warning', "The name must be longer than 3 characters. ",
 
+    //     [
 
+    //       {
+    //         text: 'Do not Show This Again', onPress: () => console.warn('Do not Show This Again')
+    //       },
+
+    //       {
+    //         text: 'Cancel', onPress: () => console.warn('Cancel')
+    //       },
+
+    //       {
+    //         text: 'OK', onPress: () => console.warn('OK')
+    //       }
+
+    //     ],
+
+    //     {
+    //       cancelable: true, onDismiss: () => console.warn('Alert Dismissed')
+    //     })
+
+    
+
+    // ToastAndroid.showWithGravityAndOffset(
+    //   "The name must be longer than 3 characters. ",
+    // ToastAndroid.LONG,
+    // ToastAndroid.CENTER,
+    // 0,
+    // 50
+     
+    // )
 
 
 
