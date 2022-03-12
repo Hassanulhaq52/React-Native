@@ -15,7 +15,8 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   TouchableWithoutFeedback,
-  hitSlop
+  hitSlop,
+  Alert
 
 } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
@@ -31,7 +32,41 @@ const App = () => {
   const [submitted, SetSubmitted] = useState(false);
   const onPressHandler = () => {
 
-    SetSubmitted(!submitted);
+    if (name.length > 3) {
+
+      SetSubmitted(!submitted);
+
+    }
+    else {
+
+      Alert.alert('Warning', "The name must be longer than 3 characters. ",
+
+        [
+
+          {
+            text: 'Do not Show This Again', onPress: () => console.warn('Do not Show This Again')
+          },
+
+          {
+            text: 'Cancel', onPress: () => console.warn('Cancel')
+          },
+
+          {
+            text: 'OK', onPress: () => console.warn('OK')
+          }
+
+        ],
+
+        {
+          cancelable: true, onDismiss: () => console.warn('Alert Dismissed')
+        }
+
+      )
+
+
+    }
+
+
 
   }
 
@@ -80,13 +115,13 @@ const App = () => {
       </TouchableWithoutFeedback> */}
 
       <Pressable
-      
-      onPress = {onPressHandler}
-      hitSlop = {{top: 10, bottom: 10, right: 10, left: 10}}
-      android_ripple = {{color:'#00f'}}
-      style = {({pressed}) =>  [
-        {backgroundColor: pressed ? '#d9b793' : '#71d6eb'},
-        styles.button]}
+
+        onPress={onPressHandler}
+        hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
+        android_ripple={{ color: '#00f' }}
+        style={({ pressed }) => [
+          { backgroundColor: pressed ? '#d9b793' : '#71d6eb' },
+          styles.button]}
 
       >
 
