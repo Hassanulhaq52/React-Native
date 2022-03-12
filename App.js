@@ -13,7 +13,8 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableWithoutFeedback
 
 } from 'react-native';
 
@@ -56,22 +57,25 @@ const App = () => {
 
       /> */}
 
-      <TouchableHighlight
+      <TouchableWithoutFeedback
 
-    style = {styles.button}
-      onPress={onPressHandler}
-      activeOpacity = {0.5}
-      underlayColor = '#dddddd'
+        style={styles.button}
+        onPress={onPressHandler}
 
       >
-     
-    <Text style = {styles.text}>
 
-    {submitted ? 'clear' : 'Submit'}
+        <View style = {styles.button}>
 
-    </Text>
-          
-      </TouchableHighlight>
+          <Text style={styles.text}>
+
+            {submitted ? 'clear' : 'Submit'}
+
+          </Text>
+
+        </View>
+
+
+      </TouchableWithoutFeedback>
 
       {submitted ?
         <Text style={styles.text}>
