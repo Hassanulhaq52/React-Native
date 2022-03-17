@@ -18,7 +18,9 @@ import {
   hitSlop,
   Alert,
   ToastAndroid,
-  Modal
+  Modal,
+  Image,
+  ImageBackground
 
 } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
@@ -49,7 +51,11 @@ const App = () => {
 
   return (
 
-    <View style={styles.body}>
+    <ImageBackground
+
+      style={styles.body}
+      source={{ uri: 'https://media.istockphoto.com/photos/light-natural-wood-background-picture-id1142424263?b=1&k=20&m=1142424263&s=170667a&w=0&h=d6QXZGrpDjuHHag_rqai542X-qDem0IPXf0ty4GahgU=' }}
+    >
 
       <Modal visible={showWarning}
 
@@ -61,7 +67,7 @@ const App = () => {
 
         }
 
-        animationType = 'slide'
+        animationType='slide'
         hardwareAccelerated
       >
         <View style={styles.centered_view}>
@@ -85,14 +91,14 @@ const App = () => {
 
             </View>
 
-            <Pressable onLongPress = {() => SetshowWarning(false) }
-            style = {styles.warning_button}
-            android_ripple={{ color: '#00f' }}
+            <Pressable onPress={() => SetshowWarning(false)}
+              style={styles.warning_button}
+              android_ripple={{ color: '#00f' }}
             >
 
-<Text style={styles.text}> OK </Text>
+              <Text style={styles.text}> OK </Text>
 
-</Pressable>
+            </Pressable>
 
           </View>
 
@@ -115,7 +121,7 @@ const App = () => {
 
       <Pressable
 
-        onLongPress={onPressHandler}
+        onPress={onPressHandler}
         hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
         android_ripple={{ color: '#00f' }}
         style={({ pressed }) => [
@@ -133,15 +139,39 @@ const App = () => {
       </Pressable>
 
       {submitted ?
-        <Text style={styles.text}>
-          You Are Registered As {name}
-        </Text>
 
+        <View style={styles.body}>
+
+          <Text style={styles.text}>
+
+            You Are Registered As {name}
+
+          </Text>
+
+          <Image
+
+            style={styles.image}
+
+            source={require('./assets/done1.png')}
+            resizeMode="stretch"
+
+          />
+        </View>
         :
-        null
+
+        <Image
+
+          style={styles.image}
+
+          source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2RAX9iwJLhjKjuhqSZEisNv4D4bjiLdHRQ&usqp=CAU' }}
+          resizeMode="stretch"
+        // blurRadius={10}
+
+        />
+
       }
 
-    </View>
+    </ImageBackground>
 
   );
 
@@ -165,13 +195,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontStyle: 'italic',
     textAlign: 'center',
-    
+
 
   },
 
   input: {
 
-    borderWidth: 1,
+    borderWidth: 5,
     width: 300,
     height: 100,
     borderColor: 'blue',
@@ -234,9 +264,17 @@ const styles = StyleSheet.create({
   warning_button: {
 
     backgroundColor: '#00ff00',
-    borderRadius:20,
+    borderRadius: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20
+
+  },
+
+  image: {
+
+    width: 100,
+    height: 100,
+    margin: 10,
 
   }
 
