@@ -20,7 +20,8 @@ import {
   ToastAndroid,
   Modal,
   Image,
-  ImageBackground
+  ImageBackground,
+  
 
 } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
@@ -29,6 +30,8 @@ import SectionList from 'react-native/Libraries/Lists/SectionList';
 import { getPixelSizeForLayoutSize } from 'react-native/Libraries/Utilities/PixelRatio';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import MashButton from './customButton';
+import Header from './Header';
 
 const App = () => {
 
@@ -56,6 +59,8 @@ const App = () => {
       style={styles.body}
       source={{ uri: 'https://media.istockphoto.com/photos/light-natural-wood-background-picture-id1142424263?b=1&k=20&m=1142424263&s=170667a&w=0&h=d6QXZGrpDjuHHag_rqai542X-qDem0IPXf0ty4GahgU=' }}
     >
+
+      <Header/>
 
       <Modal visible={showWarning}
 
@@ -119,7 +124,27 @@ const App = () => {
 
       />
 
-      <Pressable
+
+    <MashButton
+    
+    onPressFunction = {onPressHandler}
+    title = {submitted ? 'clear' : 'Submit'}
+    color = {'#3aa8c9'}
+    
+    />
+
+
+    <MashButton
+    
+    onPressFunction = { () => {} }
+    title = {'Test'}
+    color = {'#4c43d1'}
+    style = {{margin : 10}} 
+    
+    />
+
+
+      {/* <Pressable
 
         onPress={onPressHandler}
         hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
@@ -136,7 +161,7 @@ const App = () => {
 
         </Text>
 
-      </Pressable>
+      </Pressable> */}
 
       {submitted ?
 
@@ -152,7 +177,7 @@ const App = () => {
 
             style={styles.image}
 
-            source={require('./assets/done1.png')}
+            source={require('../assets/done1.jpg')}
             resizeMode="stretch"
 
           />
